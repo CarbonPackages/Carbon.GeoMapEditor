@@ -15,6 +15,7 @@ Neos:
             maxZoom: 18
             attributionControl: true
             fullscreenControl: true
+          searchBar: true
           zoom: 13
           center:
             lat: 46.948

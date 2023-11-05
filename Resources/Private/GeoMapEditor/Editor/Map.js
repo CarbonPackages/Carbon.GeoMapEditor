@@ -7,6 +7,9 @@ import "leaflet.fullscreen/Control.FullScreen.css";
 import style from "./style.module.css";
 
 const areEqual = (prevProps, nextProps) => {
+    if (!marker) {
+        return true;
+    }
     const currentLocation = { ...marker.getLatLng() };
     if (currentLocation.lat != nextProps.value.lat || currentLocation.lng != nextProps.value.lng) {
         map.setView(nextProps.value, map.getZoom(), {

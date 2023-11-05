@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import { TextInput } from "@neos-project/react-ui-components";
 import { neos } from "@neos-project/neos-ui-decorators";
 import Map from "./Map";
@@ -20,7 +20,7 @@ function Editor(props, second) {
     const id = `carbon-geopoint-editor-${identifier}`;
 
     // Merge options and config
-    const { center, protomaps, defaultTileLayer, mapOptions, zoom } = Object.assign({}, config, options);
+    const { center, protomaps, defaultTileLayer, mapOptions, zoom, searchBar } = Object.assign({}, config, options);
     const hasValue = value && value.lat && value.lng;
     const point = hasValue ? value : center;
 
@@ -45,16 +45,20 @@ function Editor(props, second) {
 
     return (
         <div className={clsx(style.editor, highlight && style.hightlight)}>
-            <label htmlFor={id} className={style.srOnly}>
-                {i18nRegistry.translate("Carbon.GeoMapEditor:Main:search")}
-            </label>
-            <TextInput
-                id={id}
-                placeholder={i18nRegistry.translate("Carbon.GeoMapEditor:Main:search")}
-                onChange={setSearch}
-                onEnterKey={geoLocation}
-                className={style.searchInput}
-            />
+            {searchBar && (
+                <Fragment>
+                     <label htmlFor={id} className={style.srOnly}>
+                        {i18nRegistry.translate("Carbon.GeoMapEditor:Main:search")}
+                    </label>
+                    <TextInput
+                        id={id}
+                        placeholder={i18nRegistry.translate("Carbon.GeoMapEditor:Main:search")}
+                        onChange={setSearch}
+                        onEnterKey={geoLocation}
+                        className={style.searchInput}
+                    />
+                </Fragment>
+            )}
             <Map
                 onChange={handleValueChange}
                 point={point}
