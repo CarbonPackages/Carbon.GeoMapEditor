@@ -23,7 +23,7 @@ const areEqual = (prevProps, nextProps) => {
 let map;
 let marker;
 
-const Map = memo(({ point, zoom = 13, mapOptions = {}, url, value, onChange = () => {} }) => {
+const Map = memo(({ point, zoom = 13, mapOptions = {}, protomaps, defaultTileLayer, value, onChange = () => {} }) => {
     const mapContainer = useRef();
 
     function addMarker(map, latlng) {
@@ -46,8 +46,14 @@ const Map = memo(({ point, zoom = 13, mapOptions = {}, url, value, onChange = ()
         let marker = null;
 
         map = L.map(mapContainer.current, mapOptions).setView(point, zoom);
-        const layer = leafletLayer({ url });
-        layer.addTo(map);
+        if (protomaps?.url) {
+            const layer = leafletLayer(protomaps);
+            layer.addTo(map);
+        } else {
+            L.tileLayer(defaultTileLayer.url, {
+                attribution: defaultTileLayer.attribution
+            }).addTo(map);
+        }
 
         if (value && value.lat && value.lng) {
             marker = addMarker(map, value);
