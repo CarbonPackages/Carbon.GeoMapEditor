@@ -2,7 +2,7 @@
 
 # Geo Inspector Editor for Neos CMS
 
-https://github.com/CarbonPackages/Carbon.GeoMapEditor/assets/4510166/74015c44-14db-4b80-80a7-7a988d3f07a7
+https://github.com/CarbonPackages/Carbon.GeoMapEditor/assets/4510166/d4b0c094-6597-4b5b-870a-dacfdce3036a
 
 ## How to use it
 
