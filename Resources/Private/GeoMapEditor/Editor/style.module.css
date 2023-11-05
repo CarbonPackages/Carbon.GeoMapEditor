@@ -1,0 +1,56 @@
+.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.editor {
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.hightlight {
+    outline: 2px solid var(--colors-Warn from global);
+}
+
+.searchInput {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.mapContainer {
+    height: 400px;
+    border-bottom: 4px solid var(--colors-contrastBright from global);
+}
+
+.infoView {
+    user-select: none;
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    line-height: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border: 2px solid var(--colors-ContrastNeutral from global);
+    background: var(--colors-ContrastNeutral from global);
+    font-size: var(--fontSize-Base from global);
+    padding: 7px var(--fontSize-Base from global);
+    margin: 0;
+    box-shadow: none;
+    transition: none;
+}
+
+.propertyLabel {
+    font-weight: bold;
+}
+
+.propertyValue {
+    font-size: var(--fontSize-Small from global);
+}

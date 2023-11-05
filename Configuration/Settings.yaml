@@ -1,0 +1,30 @@
+Neos:
+  Neos:
+    Ui:
+      frontendConfiguration:
+        'Carbon.GeoMapEditor':
+          url: 'https://api.protomaps.com/tiles/v3/{z}/{x}/{y}.mvt?key=YOUR_API_KEY'
+          mapOptions:
+            scrollWheelZoom: false
+            minZoom: 3
+            maxZoom: 18
+            attributionControl: true
+            fullscreenControl: true
+          zoom: 13
+          center:
+            lat: 46.948
+            lng: 7.459
+
+      resources:
+        javascript:
+          Carbon.GeoMapEditor:GeoPointEditor:
+            resource: resource://Carbon.GeoMapEditor/Public/Plugin.js
+        stylesheets:
+          Carbon.GeoMapEditor:GeoPointEditor:
+            resource: resource://Carbon.GeoMapEditor/Public/Plugin.css
+
+    userInterface:
+      translation:
+        autoInclude:
+          Carbon.GeoMapEditor:
+            - 'Main'

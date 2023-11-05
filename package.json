@@ -1,0 +1,21 @@
+{
+  "description": "Carbon.GeoMapEditor",
+  "license": "proprietary",
+  "private": true,
+  "scripts": {
+    "build": "node build.mjs --production",
+    "watch": "node build.mjs --watch",
+    "dev": "node build.mjs"
+  },
+  "devDependencies": {
+    "@neos-project/neos-ui-extensibility": "~8.3.4",
+    "clsx": "^2.0.0",
+    "esbuild": "^0.19.4",
+    "esbuild-plugin-lightningcss-modules": "^0.1.0",
+    "leaflet": "^1.9.4",
+    "leaflet.fullscreen": "^3.0.0",
+    "prettier": "^3.0.3",
+    "protomaps": "^1.23.1",
+    "react": "^18.2.0"
+  }
+}
