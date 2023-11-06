@@ -7,17 +7,21 @@ import "leaflet.fullscreen/Control.FullScreen.css";
 import style from "./style.module.css";
 
 const areEqual = (prevProps, nextProps) => {
-    if (!marker) {
-        return true;
+    if (!nextProps.value || !nextProps.value?.lat || !nextProps.value?.lng || !marker) {
+        return true
     }
-    const currentLocation = { ...marker.getLatLng() };
-    if (currentLocation.lat != nextProps.value.lat || currentLocation.lng != nextProps.value.lng) {
-        map.setView(nextProps.value, map.getZoom(), {
-            animate: true,
-        });
-        if (marker) {
-            marker.setLatLng(nextProps.value);
+    try {
+        const currentLocation = { ...marker.getLatLng() };
+        if (currentLocation.lat != nextProps.value?.lat || currentLocation.lng != nextProps.value?.lng) {
+            map.setView(nextProps.value, map.getZoom(), {
+                animate: true,
+            });
+            if (marker) {
+                marker.setLatLng(nextProps.value);
+            }
         }
+    } catch (error) {
+
     }
 
     return true;
@@ -30,7 +34,7 @@ const Map = memo(({ point, zoom = 13, mapOptions = {}, protomaps, defaultTileLay
     const mapContainer = useRef();
 
     function addMarker(map, latlng) {
-        marker = L.marker(latlng, {
+        let marker = L.marker(latlng, {
             draggable: true,
             autoPan: true,
         });
@@ -46,8 +50,6 @@ const Map = memo(({ point, zoom = 13, mapOptions = {}, protomaps, defaultTileLay
     }
 
     useEffect(() => {
-        let marker = null;
-
         map = L.map(mapContainer.current, mapOptions).setView(point, zoom);
         if (protomaps?.url) {
             const layer = leafletLayer(protomaps);
@@ -58,7 +60,7 @@ const Map = memo(({ point, zoom = 13, mapOptions = {}, protomaps, defaultTileLay
             }).addTo(map);
         }
 
-        if (value && value.lat && value.lng) {
+        if (value && value?.lat && value?.lng) {
             marker = addMarker(map, value);
         }
 
@@ -86,10 +88,12 @@ const Map = memo(({ point, zoom = 13, mapOptions = {}, protomaps, defaultTileLay
 
         // unmount map function
         return () => {
-            map.remove();
             if (marker) {
                 marker.remove();
             }
+            map.remove();
+            marker = null;
+            map = null;
         };
     });
 

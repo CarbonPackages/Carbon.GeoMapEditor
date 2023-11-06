@@ -13,7 +13,7 @@ const neosifier = neos((globalRegistry) => ({
 const pointToFormatedString = ({ lat, lng }, f = 2) => `${lat.toFixed(f)}" N, ${lng.toFixed(f)}" W`;
 const pointToString = ({ lat, lng }) => `${lat.toFixed(7)},${lng.toFixed(7)}`;
 
-function Editor(props, second) {
+function Editor(props) {
     const handleValueChange = (value) => props.commit(value);
     const [search, setSearch] = useState("");
     const { value, highlight, options, i18nRegistry, config, identifier } = props;
@@ -21,8 +21,8 @@ function Editor(props, second) {
 
     // Merge options and config
     const { center, protomaps, defaultTileLayer, mapOptions, zoom, searchBar } = Object.assign({}, config, options);
-    const hasValue = value && value.lat && value.lng;
-    const point = hasValue ? value : center;
+    const hasValue = value && value?.lat && value?.lng;
+    const point = hasValue ? {...value} : {...center};
 
     const geoLocation = () => {
         const url = new URL("https://nominatim.openstreetmap.org/search");
@@ -32,7 +32,7 @@ function Editor(props, second) {
             .then((res) => res.json())
             .then((data) => {
                 data = data[0];
-                if (!data || !data.lat || !data.lon) {
+                if (!data || !data?.lat || !data?.lon) {
                     return;
                 }
                 const location = {
@@ -62,7 +62,7 @@ function Editor(props, second) {
             <Map
                 onChange={handleValueChange}
                 point={point}
-                value={value}
+                value={{...value}}
                 mapOptions={mapOptions}
                 protomaps={protomaps}
                 defaultTileLayer={defaultTileLayer}
