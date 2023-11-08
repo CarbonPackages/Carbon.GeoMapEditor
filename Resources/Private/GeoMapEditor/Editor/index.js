@@ -22,7 +22,7 @@ function Editor(props) {
     // Merge options and config
     const { center, protomaps, defaultTileLayer, mapOptions, zoom, searchBar } = Object.assign({}, config, options);
     const hasValue = value && value?.lat && value?.lng;
-    const point = hasValue ? {...value} : {...center};
+    const point = hasValue ? { ...value } : { ...center };
 
     const geoLocation = () => {
         const url = new URL("https://nominatim.openstreetmap.org/search");
@@ -47,7 +47,7 @@ function Editor(props) {
         <div className={clsx(style.editor, highlight && style.hightlight)}>
             {searchBar && (
                 <Fragment>
-                     <label htmlFor={id} className={style.srOnly}>
+                    <label htmlFor={id} className={style.srOnly}>
                         {i18nRegistry.translate("Carbon.GeoMapEditor:Main:search")}
                     </label>
                     <TextInput
@@ -62,7 +62,7 @@ function Editor(props) {
             <Map
                 onChange={handleValueChange}
                 point={point}
-                value={{...value}}
+                value={{ ...value }}
                 mapOptions={mapOptions}
                 protomaps={protomaps}
                 defaultTileLayer={defaultTileLayer}

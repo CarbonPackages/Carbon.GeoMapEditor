@@ -8,7 +8,7 @@ import style from "./style.module.css";
 
 const areEqual = (prevProps, nextProps) => {
     if (!nextProps.value || !nextProps.value?.lat || !nextProps.value?.lng || !marker) {
-        return true
+        return true;
     }
     try {
         const currentLocation = { ...marker.getLatLng() };
@@ -20,9 +20,7 @@ const areEqual = (prevProps, nextProps) => {
                 marker.setLatLng(nextProps.value);
             }
         }
-    } catch (error) {
-
-    }
+    } catch (error) {}
 
     return true;
 };
@@ -56,7 +54,7 @@ const Map = memo(({ point, zoom = 13, mapOptions = {}, protomaps, defaultTileLay
             layer.addTo(map);
         } else {
             L.tileLayer(defaultTileLayer.url, {
-                attribution: defaultTileLayer.attribution
+                attribution: defaultTileLayer.attribution,
             }).addTo(map);
         }
 

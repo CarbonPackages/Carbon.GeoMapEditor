@@ -1,15 +1,14 @@
 .PHONY: help install copy-images watch dev production build prettier
 
-.DEFAULT_GOAL := production
+.DEFAULT_GOAL := build
 
 ## Prettier files
 prettier:
 	pnpm prettier --write --no-error-on-unmatched-pattern 'Resources/Private/**/*.{js,ts,php,yaml,pcss}'
+	pnpm prettier --write --no-error-on-unmatched-pattern '{Configuration,NodeTypes}/**/*.{js,ts,php,yaml,pcss,css}'
 
 ## Install dependencies and build production version
-build:
-	pnpm install
-	make production
+build: prettier install production
 
 ## Install dependencies
 install:
