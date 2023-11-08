@@ -4,6 +4,16 @@
 
 https://github.com/CarbonPackages/Carbon.GeoMapEditor/assets/4510166/d4b0c094-6597-4b5b-870a-dacfdce3036a
 
+## Installation
+
+Most of the time you have to make small adjustments to a package (e.g. configuration in Settings.yaml). Because of that, it is important to add the corresponding package to the composer from your theme package.
+
+```bash
+composer require carbon/geomapeditor --no-update
+```
+
+The --no-update command prevent the automatic update of the dependencies. After the package was added to your theme composer.json, go back to the root of the Neos installation and run composer update. Et voilà! Your desired package is now installed correctly.
+
 ## How to use it
 
 ```yaml
