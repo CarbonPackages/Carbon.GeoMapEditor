@@ -9,7 +9,7 @@ body:
       value: Thank you for taking the time to suggest a new feature!
   - type: markdown
     attributes:
-      value: Please describe the feature in detail. Why would it would be a good addition to Carbon.Pipeline?
+      value: Please describe the feature in detail. Why would it would be a good addition to Carbon.GeoMapEditor?
   - type: textarea
     id: description
     attributes:
