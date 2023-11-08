@@ -27,6 +27,7 @@
 .mapContainer {
     height: 400px;
     border-bottom: 4px solid var(--colors-contrastBright from global);
+    z-index: 0;
 }
 
 .infoView {
