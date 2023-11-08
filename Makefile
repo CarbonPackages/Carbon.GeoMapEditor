@@ -8,7 +8,7 @@ prettier:
 	pnpm prettier --write --no-error-on-unmatched-pattern '{Configuration,NodeTypes}/**/*.{js,ts,php,yaml,pcss,css}'
 
 ## Install dependencies and build production version
-build: prettier install production
+build: install prettier production
 
 ## Install dependencies
 install:
