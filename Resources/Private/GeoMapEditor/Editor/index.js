@@ -28,6 +28,7 @@ function Editor(props) {
         const url = new URL("https://nominatim.openstreetmap.org/search");
         url.searchParams.set("q", search);
         url.searchParams.set("format", "jsonv2");
+        url.searchParams.set("limit", "1");
         fetch(url.toString())
             .then((res) => res.json())
             .then((data) => {
