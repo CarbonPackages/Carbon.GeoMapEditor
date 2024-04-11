@@ -14,7 +14,6 @@ Neos:
             minZoom: 3
             maxZoom: 18
             attributionControl: true
-            fullscreenControl: true
           searchBar: true
           zoom: 13
           center:
@@ -25,6 +24,8 @@ Neos:
         javascript:
           Carbon.GeoMapEditor:GeoPointEditor:
             resource: resource://Carbon.GeoMapEditor/Public/Plugin.js
+            attributes:
+              type: 'module'
         stylesheets:
           Carbon.GeoMapEditor:GeoPointEditor:
             resource: resource://Carbon.GeoMapEditor/Public/Plugin.css

@@ -1,10 +1,10 @@
-.PHONY: help install copy-images watch dev production build prettier
+.PHONY: help install prepare watch dev production build prettier clean
 
 .DEFAULT_GOAL := build
 
 ## Prettier files
 prettier:
-	pnpm prettier --write --no-error-on-unmatched-pattern '{*,**/*}.{yaml,css,js,json,md}'
+	pnpm prettier --write --no-error-on-unmatched-pattern '{*,**/*}.{yaml,css,js,jsx,json,md,mjs}'
 
 ## Install dependencies and build production version
 build: install prettier production
@@ -13,26 +13,26 @@ build: install prettier production
 install:
 	pnpm install
 
-## Copy images from leaflet to public folder
-copy-images:
+## Prepare Public folder
+prepare:
+	rm -rf Resources/Public/
 	mkdir -pv Resources/Public/
-	cp node_modules/leaflet.fullscreen/icon-fullscreen.svg Resources/Public/
 	cp -r node_modules/leaflet/dist/images Resources/Public/
 
 
 ## Watch for changes in JS and CSS files
 watch:
-	make copy-images
+	make prepare
 	pnpm watch
 
 ## Build development version
 dev:
-	make copy-images
+	make prepare
 	pnpm dev
 
 ## Build production version
 production:
-	make copy-images
+	make prepare
 	pnpm build
 
 # Define colors

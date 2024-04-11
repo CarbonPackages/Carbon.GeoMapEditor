@@ -2,7 +2,6 @@ import esbuild from "esbuild";
 import extensibilityMap from "@neos-project/neos-ui-extensibility/extensibilityMap.json" assert { type: "json" };
 import { cssModules } from "esbuild-plugin-lightningcss-modules";
 
-
 /** @type {import("esbuild").BuildOptions} */
 const options = {
     logLevel: "info",
@@ -10,7 +9,8 @@ const options = {
     minify: process.argv.includes("--production"),
     sourcemap: true,
     target: "es2020",
-    format: "iife",
+    format: "esm",
+    splitting: true,
     legalComments: "none",
     entryPoints: { Plugin: "Resources/Private/GeoMapEditor/manifest.js" },
     loader: {
