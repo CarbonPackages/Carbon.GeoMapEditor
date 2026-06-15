@@ -38,7 +38,6 @@ const Map = memo(
         point,
         zoom = 13,
         mapOptions = {},
-        protomaps,
         defaultTileLayer,
         value,
         onChange = () => {},
@@ -63,18 +62,9 @@ const Map = memo(
 
         useEffect(() => {
             map = L.map(mapContainer.current, mapOptions).setView(point, zoom);
-            const fetchProtomaps = async () => {
-                if (protomaps?.url) {
-                    const { leafletLayer } = await import("protomaps");
-                    const layer = leafletLayer(protomaps);
-                    layer.addTo(map);
-                } else {
-                    L.tileLayer(defaultTileLayer.url, {
-                        attribution: defaultTileLayer.attribution,
-                    }).addTo(map);
-                }
-            };
-            fetchProtomaps();
+            L.tileLayer(defaultTileLayer.url, {
+                attribution: defaultTileLayer.attribution,
+            }).addTo(map);
             if (value && value?.lat && value?.lng) {
                 marker = addMarker(map, value);
             }

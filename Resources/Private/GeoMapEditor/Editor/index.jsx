@@ -24,7 +24,7 @@ function Editor(props) {
     const id = `carbon-geopoint-editor-${identifier}`;
 
     // Merge options and config
-    const { center, protomaps, defaultTileLayer, mapOptions, zoom, searchBar } =
+    const { center, defaultTileLayer, mapOptions, zoom, searchBar } =
         Object.assign({}, config, options);
     const hasValue = value && value?.lat && value?.lng;
     const point = hasValue ? { ...value } : { ...center };
@@ -74,7 +74,6 @@ function Editor(props) {
                 point={point}
                 value={{ ...value }}
                 mapOptions={mapOptions}
-                protomaps={protomaps}
                 defaultTileLayer={defaultTileLayer}
                 zoom={zoom}
             />
