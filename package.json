@@ -8,14 +8,14 @@
     "dev": "node build.mjs"
   },
   "devDependencies": {
-    "@neos-project/neos-ui-extensibility": "~8.3.7",
-    "clsx": "^2.1.0",
-    "esbuild": "^0.19.4",
+    "@neos-project/neos-ui-extensibility": "~8.3.19",
+    "clsx": "^2.1.1",
+    "esbuild": "^0.28.1",
     "esbuild-plugin-lightningcss-modules": "^0.1.2",
     "leaflet": "^1.9.4",
-    "leaflet.fullscreen": "^3.0.1",
-    "prettier": "^3.2.5",
-    "protomaps": "^1.23.1",
-    "react": "^18.2.0"
-  }
+    "leaflet.fullscreen": "^5.3.1",
+    "prettier": "^3.8.4",
+    "react": "^18.3.1"
+  },
+  "packageManager": "pnpm@11.7.0+sha512.19cc852c120c7125760f2443ee6be0ca5b40f9f50598de1a09a1f177503e010e57c23c77646e01e761de59bf874fb22a3398c33ab9691fc13eb946b6f0f4d620"
 }
